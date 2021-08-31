@@ -89,7 +89,7 @@ void makePPMHeader(struct PPM_Header* header, int width, int height){
     h->height = height;
     h->width = width;
     h->maxval=225;
-    header = &h;
+   
 }
 
 /**
