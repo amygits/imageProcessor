@@ -7,17 +7,25 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "PixelProcessor.h"
 
 /////////////////////////////////////////////////////////////
 //  Type defintions
 
 struct PPM_Header{
-	//TODO:Finish struct
+    char signature[3];
+    unsigned width, height, maxval;
 };
 
 
 /////////////////////////////////////////////////////////////
 //  Function definitions
+
+/*
+ * Creates struct PPM_Header
+ * @return pointer to new PPM_Header struct
+ */
+struct PPM_Header* init_PPM_Header();
 
 /**
  * read PPM header of a file. Useful for converting files from BMP to PPM.
