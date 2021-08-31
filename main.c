@@ -27,13 +27,22 @@ int main(int argc, char** argv) {
     //struct DIB_Header* header_dib = init_DIB_Header();
     //struct PPM_Header* header_ppm = init_PPM_Header();
     
-    struct PPM_Header* temp;
-    makePPMHeader(temp, 100, 100);
-    printf("signature: %c%c\n", temp->signature[0], temp->signature[1]);
-    printf("width: %u\n", temp->width);
-    printf("height: %u\n", temp->height);
-    printf("maxval: %u\n", temp->maxval);
-    printf("PPMHeader read Success\n");
+    //struct PPM_Header* temp;
+    struct BMP_Header* bmpTemp;
+    //struct DIB_Header* dibTemp;
+    printf("signature: %c%c\n", bmpTemp->signature[0], bmpTemp->signature[1]);
+    printf("size: %d\n", bmpTemp->size);
+    printf("reserved1: %d\n", bmpTemp->reserved1);
+    printf("reserved2: %d\n", bmpTemp->reserved2);
+    printf("offset: %d\n", bmpTemp->offset_pixel_array);
+    
+    //makePPMHeader(temp, 100, 100);
+    makeBMPHeader(bmpTemp, 100, 100);
+    printf("size: %d\n", bmpTemp->size);
+    printf("reserved1: %d\n", bmpTemp->reserved1);
+    printf("reserved2: %d\n", bmpTemp->reserved2);
+    printf("offset: %d\n", bmpTemp->offset_pixel_array);
+    
     //readBMPHeader(bmpInput1, header_bmp);
     //readDIBHeader(bmpInput1, header_dib);
     //int width = header_dib->width;
