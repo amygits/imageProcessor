@@ -3,7 +3,14 @@
 
 /////////////////////////////////////////////////////////////
 //  Function definitions
-        
+     /*
+ * Creates struct Pixel
+ * @return pointer to new Pixel struct
+ */ 
+struct Pixel* init_Pixel(){
+    struct Pixel *h = calloc(1, sizeof*h);
+    return h;
+}
 /**
  * Shift color of Pixel array. The dimension of the array is width * height. The shift value of RGB is 
  * rShift, gShiftï¼ŒbShift. Useful for color shift.
@@ -59,12 +66,12 @@ void colorShiftPixels(struct Pixel** pArr, int width, int height, int rShift, in
                //printf("g: %d\n", g);
                 temp[counter].g = g;
            }
-           printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
+           //printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
            //printf("exiting for layer 2, loop: %d\n", y);
            counter++;
        }
        //printf("exiting for layer 1, loop: %d\n", x);
    }
-   printf("Pixel color shift success");
+   printf("Pixel color shift success\n");
     
 }

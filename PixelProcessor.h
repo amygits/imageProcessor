@@ -17,6 +17,11 @@ struct Pixel{
 };
 /////////////////////////////////////////////////////////////
 //  Function definitions
+     /*
+ * Creates struct Pixel
+ * @return pointer to new Pixel struct
+ */ 
+struct Pixel* init_Pixel();
 
 /**
  * Shift color of Pixel array. The dimension of the array is width * height. The shift value of RGB is 
