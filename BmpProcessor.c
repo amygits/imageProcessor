@@ -46,21 +46,21 @@ void readBMPHeader(FILE* file, struct BMP_Header* header) {
     
     printf("\nStarting BMPHeader read..\n");
     fread(&header->signature, sizeof(char) * 2, 1, file);
-    //printf(">signature read success..\n");
+    printf(">signature read success..\n");
     fread(&header->size, sizeof(int), 1, file);
-    //printf(">size read success..\n");
+    printf(">size read success..\n");
     fread(&header->reserved1, sizeof(short), 1, file);
-    //printf(">reserved1 read success..\n");
+    printf(">reserved1 read success..\n");
     fread(&header->reserved2, sizeof(short), 1, file);
-    //printf(">reserved2 read success..\n");
+    printf(">reserved2 read success..\n");
     fread(&header->offset_pixel_array, sizeof(int), 1, file);
-    //printf(">offset_pixel_array read success..\n");
+    printf(">offset_pixel_array read success..\n");
     
-    /*printf("signature: %c%c\n", header->signature[0], header->signature[1]);
+    printf("signature: %c%c\n", header->signature[0], header->signature[1]);
     printf("size: %d\n", header->size);
     printf("reserved1: %d\n", header->reserved1);
     printf("reserved2: %d\n", header->reserved2);
-    printf("offset: %d\n", header->offset_pixel_array);*/
+    printf("offset: %d\n", header->offset_pixel_array);
     printf("BMPHeader read Success\n");
 }
 
