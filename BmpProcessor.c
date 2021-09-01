@@ -152,8 +152,18 @@ void writeDIBHeader(FILE* file, struct DIB_Header* header) {
  */
 void makeBMPHeader(struct BMP_Header* header, int width, int height) {
     
+    printf("Making new BMP Header..\n");
+    struct BMP_Header *h = header;
+    
+    h->signature[0] = 'B';
+    h->signature[1] = 'M';
+    h->size = 69366;
+    h->reserved1 = 0;
+    h->reserved2 = 0;
+    h->offset_pixel_array = 54;
+    header = &h;
+   printf("Make new BMP Header success\n");
 }
-
 
  /**
  * Makes new DIB header based on width and height. Useful for converting files from PPM to BMP.
@@ -163,7 +173,20 @@ void makeBMPHeader(struct BMP_Header* header, int width, int height) {
  * @param  height: Height of the image that this header is for
  */
 void makeDIBHeader(struct DIB_Header* header, int width, int height){
-    
+     printf("Making new DIB Header..\n");
+    struct DIB_Header *h = header;
+    h->size =  sizeof*h;
+    h->width = width;
+    h->height= height;
+    h->planes = 1;
+    h->compression = 0;
+    h->image_size = 69312;
+    h->x_pix_per_m = 3780;
+    h->y_pix_per_m = 3780;
+    h->colors = 0;
+    h->impColors = 0;
+    header = &h;
+   printf("Make new DIB Header success\n");
 }
 
 

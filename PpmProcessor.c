@@ -82,13 +82,14 @@ void writePPMHeader(FILE* file, struct PPM_Header* header){
  */
 void makePPMHeader(struct PPM_Header* header, int width, int height){
     
-    struct PPM_Header *h = calloc(1, sizeof*h);
+    struct PPM_Header *h = header;
     
     h->signature[0] = 'P';
     h->signature[1] = '6';
     h->height = height;
     h->width = width;
-    h->maxval=225;
+    h->maxval = 225;
+    header = &h;
    
 }
 
