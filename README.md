@@ -1,5 +1,5 @@
 ## Image Processor
-#Simple image processor in C that will read BMP/PPM files with option to apply a pixel color shift "filter" then save a copy of the image.  
+# Simple image processor in C that will read BMP/PPM files with option to apply a pixel color shift "filter" then save a copy of the image.  
 
 Usage: \n./MaImageProcessors -i <input_file_name(char*)> -o <out_file_name>"
 "-o exports to output file, optional argument following to specify file name"
