@@ -99,19 +99,19 @@ int main(int argc, char** argv) {
             if (strcmp(&inputfile[dflen - 4], ".bmp") == 0) {
                 struct BMP_Header* bmpheader = init_BMP_Header();
                 struct DIB_Header* dibheader = init_DIB_Header();
-                readBMPHeader(inputfile, bmpheader);
-                readDIBHeader(inputfile, dibheader);
+                readBMPHeader(fileImport, bmpheader);
+                readDIBHeader(fileImport, dibheader);
                 width = dibheader->width;
                 height = dibheader->height;
-                readPixelsBMP(inputfile, pixelBody, width, height);
+                readPixelsBMP(fileImport, pixelBody, width, height);
             } 
             //if ppm, performs read actions
             if (strcmp(&inputfile[dflen - 4], ".ppm") == 0) {
                 struct PPM_Header* ppmheader = init_PPM_Header();
-                readPPMHeader(inputfile, ppmheader);
+                readPPMHeader(fileImport, ppmheader);
                 width = ppmheader->width;
                 height = ppmheader->height;
-                readPixelsPPM(inputfile, pixelBody, width, height);
+                readPixelsPPM(fileImport, pixelBody, width, height);
             }
             // if any of the r/g/b options are flagged
             if (rFlag == 1 || bFlag == 1 || gFlag == 1) {
@@ -119,7 +119,7 @@ int main(int argc, char** argv) {
             }
             // if output file name is flagged
             if (oFlag == 1){
-                FILE* fileExport = fopen(outputfile, "w");
+                //FILE* fileExport = fopen(outputfile, "w");
                 //if type == PPM
                 
                 //else export as BMP

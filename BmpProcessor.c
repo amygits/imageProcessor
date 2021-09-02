@@ -46,7 +46,7 @@ void readBMPHeader(FILE* file, struct BMP_Header* header) {
     
     printf("\nStarting BMPHeader read..\n");
     fread(&header->signature, sizeof(char) * 2, 1, file);
-    //printf(">signature read success..\n");
+   // printf(">signature read success..\n");
     fread(&header->size, sizeof(int), 1, file);
     //printf(">size read success..\n");
     fread(&header->reserved1, sizeof(short), 1, file);
@@ -137,6 +137,17 @@ void writeDIBHeader(FILE* file, struct DIB_Header* header) {
     fwrite(&header->y_pix_per_m, sizeof(int), 1, file);
     fwrite(&header->colors, sizeof(int), 1, file);
     fwrite(&header->impColors, sizeof(int), 1, file);
+    /*printf("size: %d\n", header->size);
+    printf("width: %d\n", header->width);
+    printf("height: %d\n", header->height);
+    printf("planes:: %d\n", header->planes);
+    printf("bits_per_pix: %d\n", header->bits_per_pix);
+    printf("compression: %d\n", header->compression);
+    printf("image_size: %d\n", header->image_size);
+    printf("x_pix_per_m: %d\n", header->x_pix_per_m);
+    printf("y_pix_per_m: %d\n", header->y_pix_per_m);
+    printf("colors: %d\n", header->colors);
+    printf("impColors: %d\n", header->impColors);*/
     printf("DIB Header write Success\n");
     
 }
@@ -161,8 +172,14 @@ void makeBMPHeader(struct BMP_Header* header, int width, int height) {
     h->reserved1 = 0;
     h->reserved2 = 0;
     h->offset_pixel_array = 54;
-    header = &h;
-   printf("Make new BMP Header success\n");
+    header = h;
+    /*printf("signature: %c%c\n", header->signature[0], header->signature[1]);
+    printf("size: %d\n", header->size);
+    printf("reserved1: %d\n", header->reserved1);
+    printf("reserved2: %d\n", header->reserved2);
+    printf("offset: %d\n", header->offset_pixel_array);*/
+    
+    printf("Make new BMP Header success\n");
 }
 
  /**
@@ -173,7 +190,7 @@ void makeBMPHeader(struct BMP_Header* header, int width, int height) {
  * @param  height: Height of the image that this header is for
  */
 void makeDIBHeader(struct DIB_Header* header, int width, int height){
-     printf("Making new DIB Header..\n");
+    printf("Making new DIB Header..\n");
     struct DIB_Header *h = header;
     h->size =  sizeof*h;
     h->width = width;
@@ -185,7 +202,19 @@ void makeDIBHeader(struct DIB_Header* header, int width, int height){
     h->y_pix_per_m = 3780;
     h->colors = 0;
     h->impColors = 0;
-    header = &h;
+    header = h;
+    /*printf("size: %d\n", header->size);
+    printf("width: %d\n", header->width);
+    printf("height: %d\n", header->height);
+    printf("planes:: %d\n", header->planes);
+    printf("bits_per_pix: %d\n", header->bits_per_pix);
+    printf("compression: %d\n", header->compression);
+    printf("image_size: %d\n", header->image_size);
+    printf("x_pix_per_m: %d\n", header->x_pix_per_m);
+    printf("y_pix_per_m: %d\n", header->y_pix_per_m);
+    printf("colors: %d\n", header->colors);
+    printf("impColors: %d\n", header->impColors); */
+
    printf("Make new DIB Header success\n");
 }
 
@@ -213,7 +242,7 @@ void readPixelsBMP(FILE* file, struct Pixel** pArr, int width, int height) {
            //printf("g read success\n");
            fread(&temp[counter].r, sizeof(char), 1, file);
            //printf("r read success\n");
-           printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
+           //printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
            //printf("exiting for layer 2, loop: %d\n", y);
            counter++;
        }
@@ -248,12 +277,12 @@ void writePixelsBMP(FILE* file, struct Pixel** pArr, int width, int height) {
            //printf("g write success\n");
            fwrite(&temp[counter].r, sizeof(char), 1, file);
            //printf("b write success\n");
-           printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
+           //printf("color: B=%d, G=%d, R=%d\n", temp[counter].b, temp[counter].g, temp[counter].r);
            //printf("exiting for layer 2, loop: %d\n", y);
            counter++;
        }
        fseek(file, sizeof(unsigned char) * width, SEEK_CUR);
        //printf("exiting for layer 1, loop: %d\n", x);
    }
-   printf("Write BMP Pixels success");
+   printf("Write BMP Pixels success\n");
 }

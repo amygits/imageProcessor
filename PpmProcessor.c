@@ -1,8 +1,10 @@
 
 /** 
-* Purpose:
+* Purpose: Defines PPM header structs and implements read, write functionality for header and pixel body of a specified input file
+* Includes make headers for file conversion (between PPM and BMP)
 *
-* Completion time: 
+*
+* Completion time: 2 hours
 * 
 * @author Amy Ma
 * @version 08/28/2021
@@ -89,7 +91,7 @@ void makePPMHeader(struct PPM_Header* header, int width, int height){
     h->height = height;
     h->width = width;
     h->maxval = 225;
-    header = &h;
+    header = h;
    
 }
 
@@ -145,7 +147,7 @@ void writePixelsPPM(FILE* file, struct Pixel** pArr, int width, int height){
        //printf("entering for layer 1, loop: %d\n", x);
        for (int y = 0; y < height; y++){
            //printf("entering for layer 2, loop: %d\n", y);
-           fprintf(file, "%c\n %c\n %c\n", temp[counter].r, temp[counter].g, temp[counter].b);
+           //fprintf(file, "%c\n %c\n %c\n", temp[counter].r, temp[counter].g, temp[counter].b);
            //printf("color #%d: B=%d, G=%d, R=%d\n", counter, temp[counter].b, temp[counter].g, temp[counter].r);
            //printf("exiting for layer 2, loop: %d\n", y);
            counter++;
@@ -153,6 +155,6 @@ void writePixelsPPM(FILE* file, struct Pixel** pArr, int width, int height){
        fseek(file, sizeof(unsigned char) * width, SEEK_CUR);
        //printf("exiting for layer 1, loop: %d\n", x);
    }    
-   printf("Write PPM Pixels success");
+   printf("Write PPM Pixels success\n");
 }
 
